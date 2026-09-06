@@ -13,14 +13,14 @@ The implementation uses a two-phase approach:
 
 The solution adheres to the following constraints:
 
-- **Zero Dynamic Memory Allocation:** No memory is allocated at runtime; all buffers are pre-allocated by the caller.
+- **Zero Dynamic Memory Allocation in `sparse_multiply`:** The function uses caller-provided buffers. The test harness allocates those buffers at runtime.
 - **Direct Output:** The result is written directly into the caller-provided output buffer.
 
 ## Compilation and Usage
 
-The implementation is verified using the provided test harness:
+Run the bundled harness, which compares the output with dense multiplication over 100 randomized matrices:
 
 ```
-gcc -lm -o run challenge.c
+gcc challenge.c -lm -o run
 ./run
 ```
